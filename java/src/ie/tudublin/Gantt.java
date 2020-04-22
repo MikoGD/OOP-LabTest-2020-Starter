@@ -25,7 +25,7 @@ public class Gantt extends PApplet {
   }
 
   public void drawLines() {
-    float x, y;
+    float x;
 
     for (int i = 0; i < 30; i++) {
       x = map(i, 0, 29, border * 4, width - border);
