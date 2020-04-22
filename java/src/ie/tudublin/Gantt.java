@@ -19,17 +19,21 @@ public class Gantt extends PApplet {
   }
 
   public void setup() {
-    border = width * 0.05f;
-
     colorMode(HSB);
+    border = width * 0.05f;
+    loadTasks();
+    printTasks();
   }
 
   public void loadTasks() {
+    int i = 0;
     Table table = loadTable("tasks.csv", "header");
 
     for (TableRow currTableRow : table.rows()) {
-      Task task = new Task(currTableRow);
+      println(i);
+      Task task = new Task(this, currTableRow, i);
       tasks.add(task);
+      i++;
     }
   }
 
@@ -56,7 +60,7 @@ public class Gantt extends PApplet {
 
   public void drawTasks() {
     for (Task currTask : tasks) {
-      currTask.display();
+      currTask.display(border, tasks.size());
     }
   }
 
