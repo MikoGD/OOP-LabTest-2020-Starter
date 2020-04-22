@@ -124,7 +124,7 @@ public class Task {
   }
 
   public String toString() {
-    String displayString = taskName + "\t" + start + "\t" + end + "\t" + index;
+    String displayString = taskName + " \t" + start + "\t" + end;
 
     return displayString;
   }
