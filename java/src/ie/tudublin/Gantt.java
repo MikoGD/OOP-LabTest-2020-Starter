@@ -1,9 +1,19 @@
 package ie.tudublin;
 
 import processing.core.PApplet;
+import processing.data.Table;
+import processing.data.TableRow;
+
+import java.util.ArrayList;
 
 public class Gantt extends PApplet {
+  ///////////////////////////////////////////
+  // VARIABLES
+  ArrayList<Task> tasks = new ArrayList<Task>();
+  float border;
 
+  //////////////////////////////////////////
+  // METHODS
   public void settings() {
     size(800, 600);
   }
@@ -14,14 +24,19 @@ public class Gantt extends PApplet {
     colorMode(HSB);
   }
 
-  float border;
-
   public void loadTasks() {
+    Table table = loadTable("tasks.csv", "header");
 
+    for (TableRow currTableRow : table.rows()) {
+      Task task = new Task(currTableRow);
+      tasks.add(task);
+    }
   }
 
   public void printTasks() {
-
+    for (Task currTask : tasks) {
+      println(currTask);
+    }
   }
 
   public void drawLines() {
@@ -39,6 +54,14 @@ public class Gantt extends PApplet {
     }
   }
 
+  public void drawTasks() {
+    for (Task currTask : tasks) {
+      currTask.display();
+    }
+  }
+
+  ////////////////////////////////////////////////
+  // EVENTS
   public void mousePressed() {
     println("Mouse pressed");
   }
@@ -47,8 +70,11 @@ public class Gantt extends PApplet {
     println("Mouse dragged");
   }
 
+  ///////////////////////////////////////////
+  // DRAW
   public void draw() {
     background(0);
     drawLines();
+    drawTasks();
   }
 }
