@@ -70,7 +70,6 @@ public class Gantt extends PApplet {
   ////////////////////////////////////////////////
   // EVENTS
   public void mousePressed() {
-    System.out.printf("mousex: %d, mouseY: %d\n\n", mouseX, mouseY);
     for (Task currTask : tasks) {
       if (currTask.isStartArea()) {
         start = true;
