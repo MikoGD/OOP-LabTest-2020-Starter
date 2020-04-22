@@ -100,9 +100,6 @@ public class Task {
     float[] vertex2 = vertices.get(BOTTOM_LEFT);
     float[] vertex3 = vertices.get(BOTTOM_RIGHT);
 
-    System.out.printf("x1: %f, y1: %f\nx2: %f, y2: %f\n\n", vertex1[X], vertex1[Y], vertex2[X],
-        vertex2[Y]);
-
     if (p.mouseX > vertex1[X] + oneDayWidth && p.mouseX < vertex3[X]) {
       vertex1[X] += oneDayWidth;
       vertex2[X] += oneDayWidth;
@@ -111,16 +108,12 @@ public class Task {
       vertex1[X] -= oneDayWidth;
       vertex2[X] -= oneDayWidth;
     }
-    // vertices.add(TOP_LEFT, vertex1.clone());
-    // vertices.add(BOTTOM_LEFT, vertex2.clone());
   }
 
   public void setEndVertices() {
     float[] vertex1 = vertices.get(TOP_RIGHT);
     float[] vertex2 = vertices.get(BOTTOM_RIGHT);
     float[] vertex3 = vertices.get(BOTTOM_LEFT);
-
-    System.out.printf("mouseX: %d, oneDayWidth: %f\n", p.mouseX, oneDayWidth);
 
     if (p.mouseX > vertex1[X] + oneDayWidth && p.mouseX < p.width - oneDayWidth) {
       vertex1[X] += oneDayWidth;
@@ -129,13 +122,6 @@ public class Task {
       vertex1[X] -= oneDayWidth;
       vertex2[X] -= oneDayWidth;
     }
-
-
-    // System.out.printf("x1: %f, y1: %f\nx2: %f, y2: %f\n\n", vertex1[X], vertex1[Y], vertex2[X],
-    // vertex2[Y]);
-
-    // vertices.add(TOP_RIGHT, vertex1.clone());
-    // vertices.add(BOTTOM_RIGHT, vertex2.clone());
   }
 
   ///////////////////////////
