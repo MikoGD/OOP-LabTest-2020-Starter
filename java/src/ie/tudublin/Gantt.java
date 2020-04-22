@@ -20,6 +20,7 @@ public class Gantt extends PApplet {
 
   public void setup() {
     colorMode(HSB);
+
     border = width * 0.05f;
     loadTasks();
     printTasks();
@@ -30,7 +31,6 @@ public class Gantt extends PApplet {
     Table table = loadTable("tasks.csv", "header");
 
     for (TableRow currTableRow : table.rows()) {
-      println(i);
       Task task = new Task(this, currTableRow, i);
       tasks.add(task);
       i++;

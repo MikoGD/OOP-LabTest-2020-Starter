@@ -62,6 +62,10 @@ public class Task {
   ///////////////////////////
   // METHODS
 
+  public void setup() {
+    p.colorMode(PApplet.HSB);
+  }
+
   public String toString() {
     String displayString = taskName + "\t" + start + "\t" + end + "\t" + index;
 
@@ -69,10 +73,20 @@ public class Task {
   }
 
   public void display(float border, int size) {
-    float y = PApplet.map(index, 0, size - 1, border * 2, p.height - (border * 2));
+    int length = size - 1;
+
+    float colorGap = 255 / size;
+    float y = PApplet.map(index, 0, length, border * 2, p.height - (border * 2));
+    float rectX = PApplet.map(start, 1, 30, border * 4, p.width - border);
+    float oneDayWidth = PApplet.map(2, 1, 30, border * 4, p.width - border)
+        - PApplet.map(1, 1, 30, border * 4, p.width - border);
 
     p.fill(255);
     p.textAlign(PApplet.CENTER, PApplet.CENTER);
-    p.text(taskName, border * 3f, y);
+    p.text(taskName, border * 3, y);
+
+    p.fill((colorGap * index) % 255, 255, 255);
+    p.noStroke();
+    p.rect(rectX, y, oneDayWidth * (end - start), 30);
   }
 }
