@@ -40,9 +40,9 @@ public class Task {
     this.rectWidth = end - start;
     this.border = border;
     this.length = rowCount - 1;
-    getVertices();
     this.oneDayWidth = PApplet.map(2, 1, 30, border * 4, p.width - border)
         - PApplet.map(1, 1, 30, border * 4, p.width - border);
+    getVertices();
   }
 
   public Task(PApplet p, TableRow tableRow, int index, float border, int rowCount) {
@@ -116,14 +116,9 @@ public class Task {
   }
 
   public void setEndVertices() {
-    float oneDayWidth;
-
     float[] vertex1 = vertices.get(TOP_RIGHT);
     float[] vertex2 = vertices.get(BOTTOM_RIGHT);
     float[] vertex3 = vertices.get(BOTTOM_LEFT);
-
-    oneDayWidth = PApplet.map(2, 1, 30, border * 4, p.width - border)
-        - PApplet.map(1, 1, 30, border * 4, p.width - border);
 
     System.out.printf("mouseX: %d, oneDayWidth: %f\n", p.mouseX, oneDayWidth);
 
@@ -183,11 +178,8 @@ public class Task {
   }
 
   public void getVertices() {
-    float oneDayWidth, startX, endX, topY, bottomY;
+    float startX, endX, topY, bottomY;
     float[] vertex = new float[2];
-
-    oneDayWidth = PApplet.map(2, 1, 30, border * 4, p.width - border)
-        - PApplet.map(1, 1, 30, border * 4, p.width - border);
 
     startX = PApplet.map(start, 1, 30, border * 4, p.width - border);
     endX = (oneDayWidth * rectWidth) + startX;
