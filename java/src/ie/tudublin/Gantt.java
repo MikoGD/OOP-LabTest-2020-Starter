@@ -10,7 +10,10 @@ public class Gantt extends PApplet {
   ///////////////////////////////////////////
   // VARIABLES
   ArrayList<Task> tasks = new ArrayList<Task>();
+  Task currTask = null;
   float border;
+
+  boolean start, end;
 
   //////////////////////////////////////////
   // METHODS
@@ -31,7 +34,7 @@ public class Gantt extends PApplet {
     Table table = loadTable("tasks.csv", "header");
 
     for (TableRow currTableRow : table.rows()) {
-      Task task = new Task(this, currTableRow, i);
+      Task task = new Task(this, currTableRow, i, border, table.getRowCount());
       tasks.add(task);
       i++;
     }
@@ -60,18 +63,39 @@ public class Gantt extends PApplet {
 
   public void drawTasks() {
     for (Task currTask : tasks) {
-      currTask.display(border, tasks.size());
+      currTask.display();
     }
   }
 
   ////////////////////////////////////////////////
   // EVENTS
   public void mousePressed() {
-    println("Mouse pressed");
+    System.out.printf("mousex: %d, mouseY: %d\n\n", mouseX, mouseY);
+    for (Task currTask : tasks) {
+      if (currTask.isStartArea()) {
+        start = true;
+        end = false;
+        this.currTask = currTask;
+      } else if (currTask.isEndArea()) {
+        start = false;
+        end = true;
+        this.currTask = currTask;
+      }
+    }
+  }
+
+  public void mouseReleased() {
+    currTask = null;
   }
 
   public void mouseDragged() {
-    println("Mouse dragged");
+    if (currTask != null) {
+      if (start == true) {
+        currTask.setStartVertices();
+      } else if (end == true) {
+        currTask.setEndVertices();
+      }
+    }
   }
 
   ///////////////////////////////////////////
