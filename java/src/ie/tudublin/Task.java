@@ -194,6 +194,9 @@ public class Task {
     topY = PApplet.map(index, 0, length, border * 2, p.height - (border * 2));
     bottomY = topY + 30;
 
+    topY -= border / 4;
+    bottomY -= border / 4;
+
     // Top left
     vertex[0] = startX;
     vertex[1] = topY;
