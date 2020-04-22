@@ -234,7 +234,7 @@ public class Task {
     p.rectMode(PApplet.CORNERS);
     p.fill((colorGap * index) % 255, 255, 255);
     p.noStroke();
-    p.rect(vertex1[X], vertex1[Y], vertex2[X], vertex2[Y]);
+    p.rect(vertex1[X], vertex1[Y], vertex2[X], vertex2[Y], 5);
   }
 
   public void display() {
