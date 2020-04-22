@@ -69,10 +69,6 @@ public class Task {
     return end;
   }
 
-  public int getRectWidth() {
-    return rectWidth;
-  }
-
   public float[] getVertex(int vertex) {
     return vertices.get(vertex);
   }
@@ -89,10 +85,6 @@ public class Task {
 
   public void setEnd(int end) {
     this.end = end;
-  }
-
-  public void setRectWidth(int rectWidth) {
-    this.rectWidth = rectWidth > 0 ? rectWidth : 1;
   }
 
   public void setStartVertices() {
